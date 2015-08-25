@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>时间轴简历生成</title>
+<link href="http://libs.baidu.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+	ul.nav-pills{
+		width: 240px;
+	}
+    ul.nav-pills.affix{
+        top: 30px; /* Set the top position of pinned element */
+    }
+
+	.tag {
+		margin-right: 5px;
+		display:inline-block;
+		height: 26px;
+		line-height: 22px;
+		font-weight: 300
+	}
+	.skill{
+		float:left;
+		//padding:3px 2px;
+		margin: 3px 4px;
+	}
+	.skill-left{
+		//background-color:#428bca;
+		//color:white;
+		height:25px;
+		padding:0 5px;
+		border-radius:3px 0 0 3px;
+		line-height:25px;
+		float:left;
+		//border: 1px solid rgb(204, 204, 204);
+		border: 1px solid #484848;
+	}
+	.skill-right{
+		//background-color:#5bc0de;
+		background-color:#484848;
+		color:white;
+		height:25px;
+		padding:0 5px;
+		border-radius:0 3px 3px 0;
+		line-height:26px;
+		float:left;
+		margin-right: 10px;
+	}
+	.section{
+		margin:5px 0;
+		padding:0
+	}
+	.interest-label{
+		background-color: #484848;
+		font-size: 14px;
+		display: inline-block;
+		margin-bottom: 5px;
+		//font-weight: normal;
+		font-weight: 100;
+		line-height: 26px;
+		margin-left: 10px;
+	}
+</style>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container" style="margin-top:30px;">
+		<div class="jumbotron">
+			<h1>LaiXiaBai(TimelineResume)</h1>
+			<p>Go Into Action For Your New Job | Just For Fun @ Version 0.1</p>
+			<p>来瞎掰是一个娱乐性质的简历生成器，根据输入生成简历，没有保存和下载功能噢，祝使用愉快</p>
+			<p><a class="btn btn-primary btn-lg" 
+				href="#myScrollspy" role="button">See Demo</a>
+			</p>
+			<p style="float:right;font-weight:300;font-size:12px;">
+				Any Problems or Questions, Please contract with
+				<a href="mailto:xxx_3.1415926@163.com">the author</a>
+			</p>
+		</div>
+    <div class="row">
+
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="310">
+                <li class="active"><a href="#profile">Profile</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#skill">Skill</a></li>
+                <li><a href="#interest">Interest</a></li>
+                <li><a href="#personality">Personality</a></li>
+                <li><a href="#link">Link</a></li>
+                <li><a href="#summary">Summary</a></li>
+            </ul>
+        </div>
+
+ 		<div class="col-xs-9" id="lists">
+			<form action="resume.php" method="post">
+				<div id="profile" class="col-xs-12 section">
+            		<h2>Profile</h2>
+					<hr/>
+					<div class="col-xs-6 form-group">
+						<label for="ChineseName">姓名</label>
+						<input class="form-control" name="ChineseName" 
+							type="text" placeholder="陆小凤">
+					</div>
+					<div class="col-xs-6 form-group">
+						<label for="EnglishName">英文姓名</label>
+						<input class="form-control" name="EnglishName" 
+							type="text" placeholder="无英文姓名可以使用汉语拼音">
+					</div>
+					<div class="col-xs-12 form-group">
+						<label for="Signature">个人签名</label>
+						<input class="form-control" name="Signature" 
+							type="text" placeholder="互联网搬砖@BiaDu">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="Email">Email</label>
+						<input class="form-control" name="Email" 
+							type="text" placeholder="unknown@biadu.com">
+					</div>
+					<div class="col-xs-3 form-group">
+						<label for="Phone">Phone</label>
+						<input class="form-control" name="Phone" 
+							type="text" placeholder="123456789">
+					</div>
+					<div class="col-xs-5 form-group">
+						<label for="Address">Address</label>
+						<input class="form-control" name="Address" 
+							type="text" placeholder="北京市西城区成方街32号">
+					</div>
+				</div>
+
+				<div id="story" class="col-xs-12 section">
+            		<h2>Story</h2>
+					<hr/>
+					<div id="storys">
+						<div id="story_1">
+							<div class="col-xs-12" style="margin:0;padding:0">
+								<div class="col-xs-2 form-group">
+									<label for="Year">年</label>
+									<input class="form-control" name="Year_1" 
+										type="text" placeholder="2015">
+								</div>
+								<div class="col-xs-2 form-group">
+									<label for="Month">月</label>
+									<input class="form-control" name="Month_1" 
+										type="text" placeholder="Jun">
+								</div>
+								<div class="col-xs-4 form-group">
+									<label for="Location">地点</label>
+									<input class="form-control" name="Location_1" 
+										type="text" placeholder="北京.海淀">
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<span id="helpBlock" class="help-block" 
+									style="font-style:italic">例如，2014 Nov 北京.海淀</span>
+							</div>
+							<div class="col-xs-12 form-group">
+								<label for="Title">标题</label>
+								<input class="form-control" name="Title_1" 
+									type="text" placeholder="BiaDu 搜索架构重构">
+							</div>
+							<div class="col-xs-12 form-group">
+								<label for="Desc">描述</label>
+								<textarea class="form-control" name="Desc_1" placeholder="BiaDu 搜索架构重构，其实我也没做什么，这个项目只是耗费了我一个人，大概40天的时间，性能提升200%" rows="3"></textarea>
+							</div>
+							<div class="col-xs-12 forum-group" id="tags_1" 
+								style="padding-bottom:15px;">
+							</div>
+							<div class="col-xs-12" style="margin:0;padding:0">
+								<div class="col-xs-2 form-group">
+									<input id="add_tag_text_1" type="text"  
+										class="form-control" id="Tag" placeholder="C/C++">
+								</div>
+								<div class="col-xs-4 form-group" style="margin:0;padding:0">
+									<input id="add_tag_1" class="btn btn-default" 
+										type="Input" value="添加标签" style="width:90px"/>
+								</div>
+								<div class="col-xs-12">
+									<span id="helpBlock" class="help-block" 
+										style="font-style:italic;float:left;padding-right:10px">
+										为项目定义标签，例如</span>
+									<div class="label label-danger tag">C/C++</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input id="add_story" class="btn btn-primary" type="Input" 
+						value="添加新Story" style="margin-top:5px;margin-bottom:10px;">
+				</div>
+					
+				<div id="skill" class="col-xs-12 section">
+            		<h2>Skill</h2>
+					<hr/>
+					<div id="skills" class="col-xs-12 form-group">
+					</div>
+					<div class="col-xs-12" style="margin:0;padding:0">
+						<div class="col-xs-2 form-group" style="margin-right:0;padding-right:0">
+							<input type="text"  class="form-control" id="input-skill" 
+								placeholder="能力标签">
+						</div>
+						<div class="col-xs-2 form-group">
+							<input type="text"  class="form-control" id="input-skill-score" 
+								placeholder="自我打分">
+						</div>
+						<div class="col-xs-2 form-group" style="margin:0;padding:0">
+							<input id="add_skill" class="btn btn-default" type="Input" 
+								value="添加能力标签" style="width:80px">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<span id="helpBlock" class="help-block" 
+							style="font-style:italic;float:left;padding-right:10px;">
+							为自己定义标签，例如</span>
+						<div class="skill-left">C/C++</div><div class="skill-right">
+						B
+						</div>
+					</div>
+				</div>
+
+				<div id="interest" class="col-xs-12 section">
+            		<h2>Interest</h2>
+					<hr/>
+					<div id="interests" class="col-xs-12 form-group">
+					</div>
+					<div class="col-xs-12" style="margin:0;padding:0">
+						<div class="col-xs-2 form-group" 
+							style="margin-right:0;padding-right:15px;">
+							<input type="text"  class="form-control" 
+								id="interest-input" placeholder="兴趣标签">
+						</div>
+						<div class="col-xs-2 form-group" style="margin:0;padding:0">
+							<input id="add_interest" class="btn btn-default" 
+								type="Input" value="添加兴趣标签" style="width:80px">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<span id="helpBlock" class="help-block" 
+							style="font-style:italic;float:left;padding-right:10px;">
+								为你自己打上兴趣标签，例如</span>
+						<span class="label label-default font-yahei interest-label">大数据</span>
+					</div>
+				</div>
+
+				<div id="personality" class="col-xs-12 section">
+            		<h2>Personality</h2>
+					<hr/>
+					<div id="personalitys" class="col-xs-12 form-group">
+					</div>
+					<div class="col-xs-12" style="margin:0;padding:0">
+						<div class="col-xs-2 form-group" style="margin-right:0;padding-right:0">
+							<input type="text"  class="form-control" 
+								id="personality-input" placeholder="自我评价">
+						</div>
+						<div class="col-xs-2 form-group" style="margin:0;padding:0">
+							<input id="add_personality" class="btn btn-default" type="Input" 
+								value="添加自我评价" style="width:80px;margin-left:15px;">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<span id="helpBlock" class="help-block" 
+							style="font-style:italic;float:left;padding-right:10px;">
+							为自己打标签，例如</span>
+						<span class="label label-default font-yahei interest-label">
+							快速学习</span>
+					</div>
+				</div>
+
+				<div class="col-xs-12 section" id="link"> 
+            		<h2>Link</h2>
+					<hr/>
+					<div id="links">
+						<div id="link_1" class="col-xs-12 form-group" style="height:30px;">
+							<input type="text" class="form-control" name="Link_1"
+								placeholder="github.com/luxiaofeng" style="width:95%;float:left">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="col-xs-12">
+							<span id="helpBlock" class="help-block" 
+								style="font-style:italic;float:left;padding-right:10px;">
+								相关链接，github，个人网站，博客，个人成功等，例如</span>
+						</div>
+						<div class="col-xs-12" style="padding-left:0px;">
+						<ul>
+							<li><a href="#">github.com/anknown</a></li>
+							<li><a href="#">www.anknown.com</a></li>
+						</ul>
+						</div>
+					</div>
+					<input id="add_link" class="btn btn-default" type="input" value="增加link" 
+						style="width:80px;margin-top:15px;">
+				</div>
+
+				<div id="summary" class="col-xs-12 section">
+            		<h2>Summary</h2>
+					<hr/>
+					<div class="col-xs-12 form-group">
+						<label for="Desc">总结</label>
+						<textarea class="form-control" name="Summary" 
+							placeholder="找一群喜欢折腾的极客一起折腾" rows="5"></textarea>
+					</div>
+				</div>
+				<input id="gen_resume" class="btn btn-danger" type="submit" value="预览简历" 
+					style="width:80px;margin-top:15px;margin-bottom:30px;">
+			</form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function add_tag(obj){
+	var id_arr = obj.attr("id").split("_")
+	var idx = id_arr[2]
+
+	var tag_id = $("#tags_" + idx).children().last().attr("id")
+	var new_tag_id, new_tag_name
+	if(tag_id == undefined){
+		new_tag_id = "tag_" + idx + "_1"
+		new_tag_name = "Tag_" + idx + "_1"
+	}
+	else{
+		var tag_id_arr = tag_id.split("_")
+		var new_tag_idx = parseInt(tag_id_arr[2]) + 1
+		new_tag_id = "tag_" + idx + "_" + new_tag_idx
+		new_tag_name = "Tag_" + idx + "_" + new_tag_idx
+	}
+	var del_tag_id = "del_" + new_tag_id
+
+	var val = $("#add_tag_text_" + idx).val()
+	if(val != ''){
+		$("#tags_" + idx).append("<div id=\"" + new_tag_id + "\"class=\"label label-danger tag\">" + val + "<button id=\"" + del_tag_id + "\" type=\"button\" class=\"close\" aria-label=\"Close\" style=\"padding-left:3px;\"><span aria-hidden=\"true\">&times;</span></button><input type=\"text\" name=\"" + new_tag_name + "\" style=\"display:none\" value=\"" + val + "\"/> </div>")
+	}
+
+	$("#" + del_tag_id).click(function(){
+		$("#" + new_tag_id).remove()
+	})
+}
+
+$("#add_tag_1").click(function(){
+	add_tag($(this));
+});
+
+$("#add_story").click(function(){
+	if ($("#storys").children().last().find("#Year").val() == ''){
+		alert("请填写完整年")
+		return
+	}
+	if ($("#storys").children().last().find("#Month").val() == ''){
+		alert("请填写完整月")
+		return
+	}
+	if ($("#storys").children().last().find("#Location").val() == ''){
+		alert("请填写完整地点")
+		return
+	}
+	if ($("#storys").children().last().find("#Title").val() == ''){
+		alert("请填写完整标题")
+		return
+	}
+	if ($("#storys").children().last().find("#Desc").val() == ''){
+		alert("请填写完整描述")
+		return
+	}
+	
+	var id = $("#storys").children().last().attr('id')
+	var del_story_id = "del_" + id
+
+	var id_arr = id.split('_')
+	var new_idx = (parseInt(id_arr[1]) + 1)
+	var new_story_id = "story_" + new_idx
+
+	$("#storys").children().last().append("<div class=\"col-xs-12 forum-group\" style=\"padding-bottom:15px;\"> <input id=\"" + del_story_id + "\" class=\"btn btn-danger del_story\" type=\"Input\" value=\"删除此Story\" style=\"margin-top:5px;margin-bottom:10px;width:100px;\"> </div>");
+
+	$("#" + del_story_id).click(function(){
+		$("#" + id).remove()
+	})
+
+	var year_name = "Year_" + new_idx
+	var month_name = "Month_" + new_idx
+	var location_name = "Location_" + new_idx
+	var title_name = "Title_" + new_idx
+	var desc_name = "Desc_" + new_idx
+
+	var tag_text_id = "add_tag_text_" + new_idx
+	var add_tag_id = "add_tag_" + new_idx
+	var labels_id = "tags_" + new_idx
+	$("#storys").append("<div id=\"" + new_story_id + "\"><div class=\"col-xs-12\" style=\"margin:0;padding:0\"><div class=\"col-xs-2 form-group\"> <label for=\"Year\">年</label> <input class=\"form-control\" name=\"" + year_name + "\" type=\"text\" placeholder=\"2015\"> </div> <div class=\"col-xs-2 form-group\"> <label for=\"Month\">月</label> <input class=\"form-control\" name=\"" + month_name + "\" type=\"text\" placeholder=\"Jun\"> </div> <div class=\"col-xs-4 form-group\"> <label for=\"Location\">地点</label> <input class=\"form-control\" name=\"" + location_name + "\" type=\"text\" placeholder=\"海淀.北京\"> </div> </div> <div class=\"col-xs-12\"> <span id=\"helpBlock\" class=\"help-block\" style=\"font-style:italic\">例如，2014 Nov 北京.海淀</span> </div> <div class=\"col-xs-12 form-group\"> <label for=\"Title\">标题</label> <input type=\"text\" class=\"form-control\" name=\"" + title_name + "\" placeholder=\"BiaDu 搜索架构重构\"> </div> <div class=\"col-xs-12 form-group\"> <label for=\"Desc\">描述</label> <textarea class=\"form-control\" name=\"" + desc_name + "\" placeholder=\"BiaDu 搜索架构重构，其实我也没做什么，这个项目只是耗费了我一个人，大概40天的时间，性能提升200%\" rows=\"3\"></textarea> </div> <div class=\"col-xs-12 forum-group\" id=\"" + labels_id + "\" style=\"padding-bottom:15px;\"> </div> <div class=\"col-xs-12\" style=\"margin:0;padding:0\"> <div class=\"col-xs-2 form-group\"> <input id=\"" + tag_text_id + "\" type=\"text\"  class=\"form-control\" id=\"Tag\" placeholder=\"C/C++\"> </div> <div class=\"col-xs-4 form-group\" style=\"margin:0;padding:0\"> <input id=\"" + add_tag_id + "\" class=\"btn btn-default\" type=\"Input\" value=\"添加标签\" style=\"width:90px\"> </div> <div class=\"col-xs-12\"> <span id=\"helpBlock\" class=\"help-block\" style=\"font-style:italic\">为你的项目打上标签</span> </div> </div></div>");
+
+	$("#" + add_tag_id).click(function(){
+		add_tag($(this))		
+	})
+});
+
+$("#add_skill").click(function(){
+	var skill = $("#input-skill").val()
+	var score = $("#input-skill-score").val()
+	if(skill == '' || score  == ''){
+		alert("请完整填写能力标签和打分")
+		return
+	}
+
+	var id = $("#skills").children().last().attr("id")
+	var new_id
+	var skill_name
+	var skill_score_name
+
+	if (id == undefined){
+		new_id = "skill_1"
+		skill_name = "Skill_1"
+		skill_score_name = "SkillScore_1"
+	}
+	else {
+		var id_arr = id.split("_")
+		new_id = "skill_" + (parseInt(id_arr[1]) + 1)
+		skill_name = "Skill_" + (parseInt(id_arr[1]) + 1)
+		skill_score_name = "SkillScore_" + (parseInt(id_arr[1]) + 1)
+	}
+
+	var del_id = "del_" + new_id
+	
+		$("#skills").append("<div id=\"" + new_id + "\" class=\"skill\"><div class=\"skill-left\">" + skill + "</div><div class=\"skill-right\">" + score + "<button id=\"" + del_id + "\" type=\"button\" class=\"close\" aria-label=\"Close\" style=\"padding-left:3px;\"><span aria-hidden=\"true\">&times;</span></button><input type=\"text\" name=\"" + skill_name + "\" value=\"" + skill + "\" style=\"display:none\"/><input type=\"text\" name=\"" + skill_score_name + "\" value=\"" + score + "\" style=\"display:none\"/> </div><div style=\"clear:both\"></div></div>")
+
+	$("#" + del_id).click(function(){
+		$("#" + new_id).remove()	
+	}) 
+})
+
+$("#add_interest").click(function(){
+	var interest = $("#interest-input").val()
+	
+	if(interest == ''){
+		alert("请填写兴趣标签")
+		return
+	}
+
+	var id = $("#interests").children().last().attr("id")
+	var new_id
+	var interest_name
+
+	if (id == undefined){
+		new_id = "interest_1"
+		interest_name = "Interest_1"
+	}
+	else {
+		var id_arr = id.split("_")
+		new_id = "interest_" + (parseInt(id_arr[1]) + 1)
+		interest_name = "Interest_" + (parseInt(id_arr[1]) + 1)
+	}
+
+	var del_id = "del_" + new_id
+
+	$("#interests").append("<div id=\"" + new_id + "\" class=\"label interest-label\">" + interest + "<button id=\"" + del_id + "\" type=\"button\" class=\"close\" aria-label=\"Close\" style=\"padding-left:3px;\"><span aria-hidden=\"true\">×</span></button><input type=\"text\" name=\"" + interest_name + "\" value=\"" + interest + "\" style=\"display:none\"/> </div>")	
+
+	$("#" + del_id).click(function(){
+		$("#" + new_id).remove()	
+	}) 
+});
+
+$("#add_personality").click(function(){
+	var personality = $("#personality-input").val()
+	
+	if(personality == ''){
+		alert("请填写自我评价标签")
+		return
+	}
+
+	var id = $("#personalitys").children().last().attr("id")
+	var new_id
+	var personality_name
+
+	if (id == undefined){
+		new_id = "personality_1"
+		personality_name = "Personality_1"
+	}
+	else {
+		var id_arr = id.split("_")
+		new_id = "personality_" + (parseInt(id_arr[1]) + 1)
+		personality_name = "Personality_" + (parseInt(id_arr[1]) + 1)
+	}
+
+	var del_id = "del_" + new_id
+
+	$("#personalitys").append("<div id=\"" + new_id + "\" class=\"label interest-label\">" + personality + "<button id=\"" + del_id + "\" type=\"button\" class=\"close\" aria-label=\"Close\" style=\"padding-left:3px;\"><span aria-hidden=\"true\">×</span></button><input type=\"text\" name=\"" + personality_name + "\" value=\"" + personality + "\" style=\"display:none\"/> </div>")	
+
+	$("#" + del_id).click(function(){
+		$("#" + new_id).remove()	
+	}) 
+});
+
+$("#add_link").click(function(){
+	var id = $("#links").children().last().attr("id")
+	var id_arr = id.split("_")
+	var new_id = "link_" + (parseInt(id_arr[1]) + 1)
+	var del_id = "del_" + new_id
+
+	if ($("#links").children().last().find(".form-control").val() == ''){
+		alert("请填写link")
+		return
+	}
+
+	var link_name = "Link_" + (parseInt(id_arr[1]) + 1)
+
+	$("#links").append("<div id=\"" + new_id + "\" class=\"col-xs-12 form-group\" style=\"height:30px;\"> <input type=\"text\" class=\"form-control\" name=\"" + link_name + "\"placeholder=\"github.com/luxiaofeng\" style=\"width:95%;float:left\"> <button id=\"" + del_id + "\"type=\"button\" class=\"close\" aria-label=\"Close\" style=\"display:inline-block;margin-top:6px;\"><span aria-hidden=\"true\">&times;</span></button></div>")		
+
+	$("#" + del_id).click(function(){
+		$("#" + new_id).remove()	
+	}) 
+})
+</script>
