@@ -104,8 +104,8 @@ for($count = 1; $count <= $len; $count++){
 	}
 }
 
-require '/Users/hanshinan/Dev/smarty/smarty-3_1_27/libs/Smarty.class.php';
-#require 'smarty-3_1_27/libs/Smarty.class.php';
+#require '/Users/hanshinan/Dev/smarty/smarty-3_1_27/libs/Smarty.class.php';
+require 'smarty-3_1_27/libs/Smarty.class.php';
 
 $smarty = new Smarty;
 
