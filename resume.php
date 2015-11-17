@@ -1,4 +1,6 @@
 <?php
+require_once("config.php");
+
 $len = count($_POST);
 //info
 $name		= $_POST['ChineseName'];
@@ -102,8 +104,8 @@ for($count = 1; $count <= $len; $count++){
 	}
 }
 
-#require '/Users/hanshinan/Dev/smarty/smarty-3_1_27/libs/Smarty.class.php';
-require 'smarty-3_1_27/libs/Smarty.class.php';
+require '/Users/hanshinan/Dev/smarty/smarty-3_1_27/libs/Smarty.class.php';
+#require 'smarty-3_1_27/libs/Smarty.class.php';
 
 $smarty = new Smarty;
 
@@ -123,5 +125,35 @@ $smarty->assign("Interest", $interest);
 $smarty->assign("Personality", $personality);
 $smarty->assign("Summary", $summary);
 $smarty->assign("Link", $link);
+
+if(!empty($name)){
+	$content = array(
+		'name' => $name,
+		'eng_ame' => $eng_name,
+		'sign' => $sign,
+		'email' => $email,
+		'phone' => $phone,
+		'addr' => $addr,
+		'story' => $story,
+		'skill' => $skill,
+		'interest' => $interest,
+		'personality' => $personality,
+		'summary' => $summary,
+		'link' => $link,
+	);
+	$content = json_encode($content);
+	$content = addslashes($content);
+	
+	$mysqli = mysqli_init();
+	if($mysqli->real_connect($db_info['host'], $db_info['user'], 
+			$db_info['password'], $db_info['db']))
+	{
+		if($mysqli->set_charset("utf8")){
+			$time = time();
+			$sql = "INSERT INTO user values('', \"$name\", \"$content\", $time)";
+			$res = mysqli_query($mysqli, $sql);
+		}
+	}
+}
 
 $smarty->display('resume.tpl');
