@@ -1,314 +1,333 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>时间轴简历生成</title>
-<link href="http://libs.baidu.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script src="http://libs.baidu.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<style type="text/css">
-	ul.nav-pills{
-		width: 240px;
-	}
-    ul.nav-pills.affix{
-        top: 30px; /* Set the top position of pinned element */
-    }
-
-	.tag {
-		margin-right: 5px;
-		display:inline-block;
-		height: 26px;
-		line-height: 22px;
-		font-weight: 300
-	}
-	.skill{
-		float:left;
-		//padding:3px 2px;
-		margin: 3px 4px;
-	}
-	.skill-left{
-		//background-color:#428bca;
-		//color:white;
-		height:25px;
-		padding:0 5px;
-		border-radius:3px 0 0 3px;
-		line-height:25px;
-		float:left;
-		//border: 1px solid rgb(204, 204, 204);
-		border: 1px solid #484848;
-	}
-	.skill-right{
-		//background-color:#5bc0de;
-		background-color:#484848;
-		color:white;
-		height:25px;
-		padding:0 5px;
-		border-radius:0 3px 3px 0;
-		line-height:26px;
-		float:left;
-		margin-right: 10px;
-	}
-	.section{
-		margin:5px 0;
-		padding:0
-	}
-	.interest-label{
-		background-color: #484848;
-		font-size: 14px;
-		display: inline-block;
-		margin-bottom: 5px;
-		//font-weight: normal;
-		font-weight: 100;
-		line-height: 26px;
-		margin-left: 10px;
-	}
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title> 在线时间轴简历生成器</title>
+	<link href="http://libs.baidu.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://libs.baidu.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		h1{
+			margin-top:0px;
+		}
+		h2{
+			margin-top:0px;
+		}
+		.jumbotron p{
+			font-size:16px;
+		}
+		@media (max-width:768px){
+			.jumbotron p{
+				font-size:12px;
+			}
+		}
+		ul.nav-pills{
+			width: 240px;
+		}
+	    ul.nav-pills.affix{
+	        top: 10px; /* Set the top position of pinned element */
+	    }
+	
+		.tag {
+			margin-right: 5px;
+			display:inline-block;
+			height: 26px;
+			line-height: 22px;
+			font-weight: 300
+		}
+		.skill{
+			float:left;
+			//padding:3px 2px;
+			margin: 3px 4px;
+		}
+		.skill-left{
+			//background-color:#428bca;
+			//color:white;
+			height:25px;
+			padding:0 5px;
+			border-radius:3px 0 0 3px;
+			line-height:25px;
+			float:left;
+			//border: 1px solid rgb(204, 204, 204);
+			border: 1px solid #484848;
+		}
+		.skill-right{
+			//background-color:#5bc0de;
+			background-color:#484848;
+			color:white;
+			height:25px;
+			padding:0 5px;
+			border-radius:0 3px 3px 0;
+			line-height:26px;
+			float:left;
+			margin-right: 10px;
+		}
+		.section{
+			margin:5px 0;
+			padding:0
+		}
+		.interest-label{
+			background-color: #484848;
+			font-size: 14px;
+			display: inline-block;
+			margin-bottom: 5px;
+			//font-weight: normal;
+			font-weight: 100;
+			line-height: 26px;
+			margin-left: 10px;
+		}
+	</style>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy">
-<div class="container" style="margin-top:30px;">
+	<div class="container" style="margin-top:30px;">
 		<div class="jumbotron">
-			<h1>LaiXiaBai(TimelineResume)</h1>
+			<h1 class="hidden-xs">LaiXiaBai (TimelineResume)</h1>
+			<h2 class="visible-xs">LaiXiaBai (TimelineResume)</h2>
 			<p>Go Into Action For Your New Job | Just For Fun @ Version 0.1</p>
-			<p>来瞎掰是一个娱乐性质的简历生成器，根据输入生成简历，没有保存和下载功能噢，祝使用愉快</p>
-			<p><a class="btn btn-primary btn-lg" 
-				href="#myScrollspy" role="button">See Demo</a>
+			<p>来瞎掰是一个娱乐性质的简历生成器，根据输入生成简历，没有保存和下载功能噢</p>
+			<p>如果你感到满意，并且想要PDF版，请联系作者，祝使用愉快</p>
+			<p>如果你愿意提供更多配色或者参与其中，也请联系作者，祝使用愉快</p>
+			<p><a class="btn btn-primary" 
+				href="http://laixiabai.com/demo.html" role="button">See Demo</a>
 			</p>
 			<p style="float:right;font-weight:300;font-size:12px;">
 				Any Problems or Questions, Please contract with
 				<a href="mailto:xxx_3.1415926@163.com">the author</a>
 			</p>
 		</div>
-    <div class="row">
-
-        <div class="col-xs-3" id="myScrollspy">
-            <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="310">
-                <li class="active"><a href="#profile">Profile</a></li>
-                <li><a href="#story">Story</a></li>
-                <li><a href="#skill">Skill</a></li>
-                <li><a href="#interest">Interest</a></li>
-                <li><a href="#personality">Personality</a></li>
-                <li><a href="#link">Link</a></li>
-                <li><a href="#summary">Summary</a></li>
-            </ul>
-        </div>
-
- 		<div class="col-xs-9" id="lists">
-			<form action="resume.php" method="post">
-				<div id="profile" class="col-xs-12 section">
-            		<h2>Profile</h2>
-					<hr/>
-					<div class="col-xs-6 form-group">
-						<label for="ChineseName">姓名</label>
-						<input class="form-control" name="ChineseName" 
-							type="text" placeholder="陆小凤">
+	    <div class="row">
+	
+	        <div class="col-md-3 hidden-xs hidden-sm" id="myScrollspy">
+	            <ul id="nav" class="nav nav-pills nav-stacked " 
+					data-spy="affix" data-offset-top="420">
+	                <li class="active"><a href="#profile">Profile</a></li>
+	                <li><a href="#story">Story</a></li>
+	                <li><a href="#skill">Skill</a></li>
+	                <li><a href="#interest">Interest</a></li>
+	                <li><a href="#personality">Personality</a></li>
+	                <li><a href="#link">Link</a></li>
+	                <li><a href="#summary">Summary</a></li>
+	            </ul>
+	        </div>
+	
+	 		<div class="col-md-9" id="lists">
+				<form action="resume.php" method="post">
+					<div id="profile" class="col-xs-12 section">
+	            		<h2>Profile</h2>
+						<hr/>
+						<div class="col-sm-6 form-group">
+							<label for="ChineseName">姓名</label>
+							<input class="form-control" name="ChineseName" 
+								type="text" placeholder="陆小凤">
+						</div>
+						<div class="col-sm-6 form-group">
+							<label for="EnglishName">英文姓名</label>
+							<input class="form-control" name="EnglishName" 
+								type="text" placeholder="无英文姓名可以使用汉语拼音">
+						</div>
+						<div class="col-xs-12 form-group">
+							<label for="Signature">个人签名</label>
+							<input class="form-control" name="Signature" 
+								type="text" placeholder="互联网搬砖@BiaDu">
+						</div>
+						<div class="col-sm-4 form-group">
+							<label for="Email">Email</label>
+							<input class="form-control" name="Email" 
+								type="text" placeholder="unknown@biadu.com">
+						</div>
+						<div class="col-sm-3 form-group">
+							<label for="Phone">Phone</label>
+							<input class="form-control" name="Phone" 
+								type="text" placeholder="123456789">
+						</div>
+						<div class="col-sm-5 form-group">
+							<label for="Address">Address</label>
+							<input class="form-control" name="Address" 
+								type="text" placeholder="北京市西城区成方街32号">
+						</div>
 					</div>
-					<div class="col-xs-6 form-group">
-						<label for="EnglishName">英文姓名</label>
-						<input class="form-control" name="EnglishName" 
-							type="text" placeholder="无英文姓名可以使用汉语拼音">
-					</div>
-					<div class="col-xs-12 form-group">
-						<label for="Signature">个人签名</label>
-						<input class="form-control" name="Signature" 
-							type="text" placeholder="互联网搬砖@BiaDu">
-					</div>
-					<div class="col-xs-4 form-group">
-						<label for="Email">Email</label>
-						<input class="form-control" name="Email" 
-							type="text" placeholder="unknown@biadu.com">
-					</div>
-					<div class="col-xs-3 form-group">
-						<label for="Phone">Phone</label>
-						<input class="form-control" name="Phone" 
-							type="text" placeholder="123456789">
-					</div>
-					<div class="col-xs-5 form-group">
-						<label for="Address">Address</label>
-						<input class="form-control" name="Address" 
-							type="text" placeholder="北京市西城区成方街32号">
-					</div>
-				</div>
-
-				<div id="story" class="col-xs-12 section">
-            		<h2>Story</h2>
-					<hr/>
-					<div id="storys">
-						<div id="story_1">
-							<div class="col-xs-12" style="margin:0;padding:0">
-								<div class="col-xs-2 form-group">
-									<label for="Year">年</label>
-									<input class="form-control" name="Year_1" 
-										type="text" placeholder="2015">
-								</div>
-								<div class="col-xs-2 form-group">
-									<label for="Month">月</label>
-									<input class="form-control" name="Month_1" 
-										type="text" placeholder="Jun">
-								</div>
-								<div class="col-xs-4 form-group">
-									<label for="Location">地点</label>
-									<input class="form-control" name="Location_1" 
-										type="text" placeholder="北京.海淀">
-								</div>
-							</div>
-							<div class="col-xs-12">
-								<span id="helpBlock" class="help-block" 
-									style="font-style:italic">例如，2014 Nov 北京.海淀</span>
-							</div>
-							<div class="col-xs-12 form-group">
-								<label for="Title">标题</label>
-								<input class="form-control" name="Title_1" 
-									type="text" placeholder="BiaDu 搜索架构重构">
-							</div>
-							<div class="col-xs-12 form-group">
-								<label for="Desc">描述</label>
-								<textarea class="form-control" name="Desc_1" placeholder="BiaDu 搜索架构重构，其实我也没做什么，这个项目只是耗费了我一个人，大概40天的时间，性能提升200%" rows="3"></textarea>
-							</div>
-							<div class="col-xs-12 forum-group" id="tags_1" 
-								style="padding-bottom:15px;">
-							</div>
-							<div class="col-xs-12" style="margin:0;padding:0">
-								<div class="col-xs-2 form-group">
-									<input id="add_tag_text_1" type="text"  
-										class="form-control" id="Tag" placeholder="C/C++">
-								</div>
-								<div class="col-xs-4 form-group" style="margin:0;padding:0">
-									<input id="add_tag_1" class="btn btn-default" 
-										type="Input" value="添加标签" style="width:90px"/>
+	
+					<div id="story" class="col-xs-12 section">
+	            		<h2>Story</h2>
+						<hr/>
+						<div id="storys">
+							<div id="story_1">
+								<div class="col-xs-12" style="margin:0;padding:0">
+									<div class="col-sm-2 form-group">
+										<label for="Year">年</label>
+										<input class="form-control" name="Year_1" 
+											type="text" placeholder="2015">
+									</div>
+									<div class="col-sm-2 form-group">
+										<label for="Month">月</label>
+										<input class="form-control" name="Month_1" 
+											type="text" placeholder="Jun">
+									</div>
+									<div class="col-sm-4 form-group">
+										<label for="Location">地点</label>
+										<input class="form-control" name="Location_1" 
+											type="text" placeholder="北京.海淀">
+									</div>
 								</div>
 								<div class="col-xs-12">
 									<span id="helpBlock" class="help-block" 
-										style="font-style:italic;float:left;padding-right:10px">
-										为项目定义标签，例如</span>
-									<div class="label label-danger tag">C/C++</div>
+										style="font-style:italic">例如，2014 Nov 北京.海淀</span>
+								</div>
+								<div class="col-xs-12 form-group">
+									<label for="Title">标题</label>
+									<input class="form-control" name="Title_1" 
+										type="text" placeholder="BiaDu 搜索架构重构">
+								</div>
+								<div class="col-xs-12 form-group">
+									<label for="Desc">描述</label>
+									<textarea class="form-control" name="Desc_1" placeholder="BiaDu 搜索架构重构，其实我也没做什么，这个项目只是耗费了我一个人，大概40天的时间，性能提升200%" rows="3"></textarea>
+								</div>
+								<div class="col-xs-12 forum-group" id="tags_1" 
+									style="padding-bottom:15px;">
+								</div>
+								<div class="col-xs-12" style="margin:0;padding:0">
+									<div class="col-xs-8 col-sm-2 form-group">
+										<input id="add_tag_text_1" type="text"  
+											class="form-control" id="Tag" placeholder="C/C++">
+									</div>
+									<div class="col-xs-4 form-group" style="margin:0;padding:0">
+										<input id="add_tag_1" class="btn btn-default" 
+											type="Input" value="添加标签" style="width:90px"/>
+									</div>
+									<div class="col-xs-12">
+										<span id="helpBlock" class="help-block" 
+											style="font-style:italic;float:left;padding-right:10px">
+											为项目定义标签，例如</span>
+										<div class="label label-danger tag">C/C++</div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<input id="add_story" class="btn btn-primary" type="Input" 
+							value="添加新Story" style="margin-top:5px;margin-bottom:10px;">
 					</div>
-					<input id="add_story" class="btn btn-primary" type="Input" 
-						value="添加新Story" style="margin-top:5px;margin-bottom:10px;">
-				</div>
-					
-				<div id="skill" class="col-xs-12 section">
-            		<h2>Skill</h2>
-					<hr/>
-					<div id="skills" class="col-xs-12 form-group">
-					</div>
-					<div class="col-xs-12" style="margin:0;padding:0">
-						<div class="col-xs-2 form-group" style="margin-right:0;padding-right:0">
-							<input type="text"  class="form-control" id="input-skill" 
-								placeholder="能力标签">
+						
+					<div id="skill" class="col-xs-12 section">
+	            		<h2>Skill</h2>
+						<hr/>
+						<div id="skills" class="col-xs-12 form-group">
 						</div>
-						<div class="col-xs-2 form-group">
-							<input type="text"  class="form-control" id="input-skill-score" 
-								placeholder="自我打分">
+						<div class="col-xs-12" style="margin:0;padding:0">
+							<div class="col-xs-4 col-sm-2 form-group" style="margin-right:0;padding-right:0">
+								<input type="text"  class="form-control" id="input-skill" 
+									placeholder="能力标签">
+							</div>
+							<div class="col-xs-5 col-sm-2 form-group">
+								<input type="text"  class="form-control" id="input-skill-score" 
+									placeholder="自我打分">
+							</div>
+							<div class="col-xs-3 col-sm-2 form-group" style="margin:0;padding:0">
+								<input id="add_skill" class="btn btn-default" type="Input" 
+									value="添加" style="width:60px">
+							</div>
 						</div>
-						<div class="col-xs-2 form-group" style="margin:0;padding:0">
-							<input id="add_skill" class="btn btn-default" type="Input" 
-								value="添加能力标签" style="width:80px">
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<span id="helpBlock" class="help-block" 
-							style="font-style:italic;float:left;padding-right:10px;">
-							为自己定义标签，例如</span>
-						<div class="skill-left">C/C++</div><div class="skill-right">
-						B
-						</div>
-					</div>
-				</div>
-
-				<div id="interest" class="col-xs-12 section">
-            		<h2>Interest</h2>
-					<hr/>
-					<div id="interests" class="col-xs-12 form-group">
-					</div>
-					<div class="col-xs-12" style="margin:0;padding:0">
-						<div class="col-xs-2 form-group" 
-							style="margin-right:0;padding-right:15px;">
-							<input type="text"  class="form-control" 
-								id="interest-input" placeholder="兴趣标签">
-						</div>
-						<div class="col-xs-2 form-group" style="margin:0;padding:0">
-							<input id="add_interest" class="btn btn-default" 
-								type="Input" value="添加兴趣标签" style="width:80px">
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<span id="helpBlock" class="help-block" 
-							style="font-style:italic;float:left;padding-right:10px;">
-								为你自己打上兴趣标签，例如</span>
-						<span class="label label-default font-yahei interest-label">大数据</span>
-					</div>
-				</div>
-
-				<div id="personality" class="col-xs-12 section">
-            		<h2>Personality</h2>
-					<hr/>
-					<div id="personalitys" class="col-xs-12 form-group">
-					</div>
-					<div class="col-xs-12" style="margin:0;padding:0">
-						<div class="col-xs-2 form-group" style="margin-right:0;padding-right:0">
-							<input type="text"  class="form-control" 
-								id="personality-input" placeholder="自我评价">
-						</div>
-						<div class="col-xs-2 form-group" style="margin:0;padding:0">
-							<input id="add_personality" class="btn btn-default" type="Input" 
-								value="添加自我评价" style="width:80px;margin-left:15px;">
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<span id="helpBlock" class="help-block" 
-							style="font-style:italic;float:left;padding-right:10px;">
-							为自己打标签，例如</span>
-						<span class="label label-default font-yahei interest-label">
-							快速学习</span>
-					</div>
-				</div>
-
-				<div class="col-xs-12 section" id="link"> 
-            		<h2>Link</h2>
-					<hr/>
-					<div id="links">
-						<div id="link_1" class="col-xs-12 form-group" style="height:30px;">
-							<input type="text" class="form-control" name="Link_1"
-								placeholder="github.com/luxiaofeng" style="width:95%;float:left">
-						</div>
-					</div>
-					<div class="col-xs-12">
 						<div class="col-xs-12">
 							<span id="helpBlock" class="help-block" 
 								style="font-style:italic;float:left;padding-right:10px;">
-								相关链接，github，个人网站，博客，个人成功等，例如</span>
-						</div>
-						<div class="col-xs-12" style="padding-left:0px;">
-						<ul>
-							<li><a href="#">github.com/anknown</a></li>
-							<li><a href="#">www.anknown.com</a></li>
-						</ul>
+								为自己定义标签，例如</span>
+							<div class="skill-left">C/C++</div><div class="skill-right">
+							B
+							</div>
 						</div>
 					</div>
-					<input id="add_link" class="btn btn-default" type="input" value="增加link" 
-						style="width:80px;margin-top:15px;">
-				</div>
-
-				<div id="summary" class="col-xs-12 section">
-            		<h2>Summary</h2>
-					<hr/>
-					<div class="col-xs-12 form-group">
-						<label for="Desc">总结</label>
-						<textarea class="form-control" name="Summary" 
-							placeholder="找一群喜欢折腾的极客一起折腾" rows="5"></textarea>
+	
+					<div id="interest" class="col-xs-12 section">
+	            		<h2>Interest</h2>
+						<hr/>
+						<div id="interests" class="col-xs-12 form-group">
+						</div>
+						<div class="col-xs-12" style="margin:0;padding:0">
+							<div class="col-xs-8 col-sm-2 form-group" 
+								style="margin-right:0;padding-right:15px;">
+								<input type="text"  class="form-control" 
+									id="interest-input" placeholder="兴趣标签">
+							</div>
+							<div class="col-xs-4 col-sm-2 form-group" style="margin:0;padding:0">
+								<input id="add_interest" class="btn btn-default" 
+									type="Input" value="添加兴趣" style="width:84px">
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<span id="helpBlock" class="help-block" 
+								style="font-style:italic;float:left;padding-right:10px;">
+									为你自己打上兴趣标签，例如</span>
+							<span class="label label-default font-yahei interest-label">大数据</span>
+						</div>
 					</div>
-				</div>
-				<input id="gen_resume" class="btn btn-danger" type="submit" value="预览简历" 
-					style="width:80px;margin-top:15px;margin-bottom:30px;">
-			</form>
-        </div>
-    </div>
-
-</div>
+	
+					<div id="personality" class="col-xs-12 section">
+	            		<h2>Personality</h2>
+						<hr/>
+						<div id="personalitys" class="col-xs-12 form-group">
+						</div>
+						<div class="col-xs-12" style="margin:0;padding:0">
+							<div class="col-xs-9 col-sm-6 form-group">
+								<input type="text"  class="form-control" 
+									id="personality-input" placeholder="自我评价">
+							</div>
+							<div class="col-xs-3 col-sm-2 form-group" style="margin:0;padding:0">
+								<input id="add_personality" class="btn btn-default" type="Input" 
+									value="添加" style="width:60px;">
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<span id="helpBlock" class="help-block" 
+								style="font-style:italic;float:left;padding-right:10px;">
+								为自己打标签，例如</span>
+							<span class="label label-default font-yahei interest-label">
+								快速学习</span>
+						</div>
+					</div>
+	
+					<div class="col-xs-12 section" id="link"> 
+	            		<h2>Link</h2>
+						<hr/>
+						<div id="links">
+							<div id="link_1" class="col-xs-12 form-group" style="height:30px;">
+								<input type="text" class="form-control" name="Link_1"
+									placeholder="github.com/luxiaofeng" style="width:95%;float:left">
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-12">
+								<span id="helpBlock" class="help-block" 
+									style="font-style:italic;float:left;padding-right:10px;">
+									相关链接，github，个人网站，博客，个人成功等，例如</span>
+							</div>
+							<div class="col-xs-12" style="padding-left:0px;">
+							<ul>
+								<li><a href="https://github.com/anknown">github.com/anknown</a></li>
+								<li><a href="http://www.laixiabai.com">www.laixiabai.com</a></li>
+							</ul>
+							</div>
+						</div>
+						<input id="add_link" class="btn btn-default" type="input" value="增加link" 
+							style="width:80px;margin-top:15px;">
+					</div>
+	
+					<div id="summary" class="col-xs-12 section">
+	            		<h2>Summary</h2>
+						<hr/>
+						<div class="col-xs-12 form-group">
+							<label for="Desc">总结</label>
+							<textarea class="form-control" name="Summary" 
+								placeholder="找一群喜欢折腾的极客一起折腾" rows="5"></textarea>
+						</div>
+					</div>
+					<input id="gen_resume" class="btn btn-danger" type="submit" value="预览简历" 
+						style="width:80px;margin-top:15px;margin-bottom:30px;">
+				</form>
+				<div class="ds-thread" ></div>
+	        </div>
+	    </div>
+	
+	</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -510,4 +529,16 @@ $("#add_link").click(function(){
 		$("#" + new_id).remove()	
 	}) 
 })
+</script>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"laixiabai"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
 </script>
